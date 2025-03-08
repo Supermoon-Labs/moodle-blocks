@@ -1,0 +1,9 @@
+ .teacher-links a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #0073ea;
+}
+.teacher-links a:hover {
+    text-decoration: underline;
+}
