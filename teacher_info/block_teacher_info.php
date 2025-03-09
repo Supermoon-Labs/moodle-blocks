@@ -91,16 +91,6 @@ class block_teacher_info extends block_base {
             html_writer::end_div()
         );
 
-        // Add JavaScript for background download
-        $this->content->text .= html_writer::script("
-            function downloadFileInBackground(url) {
-                var iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = url;
-                document.body.appendChild(iframe);
-            }
-        ");
-
         return $this->content;
     }
 }
