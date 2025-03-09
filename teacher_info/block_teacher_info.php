@@ -71,7 +71,7 @@ class block_teacher_info extends block_base {
             $cv_url = moodle_url::make_pluginfile_url($cv_file->get_contextid(), $cv_file->get_component(), $cv_file->get_filearea(), $cv_file->get_itemid(), $cv_file->get_filepath(), $cv_file->get_filename());
             $cv_link .= html_writer::link('#', get_string('downloadcv', 'block_teacher_info'), [
                 'class' => 'btn btn-secondary',
-                'onclick' => "window.open('$cv_url', '_blank'); return false;"
+                'onclick' => "downloadFileInBackground('$cv_url'); return false;"
             ]);
         }
 
@@ -87,9 +87,18 @@ class block_teacher_info extends block_base {
         $this->content->text = html_writer::div(
             html_writer::div($teacher_picture_div, 'teacher-picture') .
             html_writer::tag('p', $teacher->firstname . ' ' . $teacher->lastname) .
-            $cv_link .
-            html_writer::end_div()
+            $cv_link 
         );
+
+        // Add JavaScript for background download
+        $this->content->text .= html_writer::script("
+            function downloadFileInBackground(url) {
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = url;
+                document.body.appendChild(iframe);
+            }
+        ");
 
         return $this->content;
     }
