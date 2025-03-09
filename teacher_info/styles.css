@@ -7,3 +7,12 @@
 .teacher-links a:hover {
     text-decoration: underline;
 }
+
+.teacher-info-block .teacher-picture .userpicture {
+    display: flex;
+    margin: auto;
+}
+
+.teacher-info-block p {
+    text-align: center;
+}
